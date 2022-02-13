@@ -1,1 +1,2 @@
 # cnv
+barebones CNV config
