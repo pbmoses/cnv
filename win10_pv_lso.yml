@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  labels:
+    app.kubernetes.io/instance: storage
+    kubernetes.io/hostname: api.pmo-sno2.pmo.ocp.philmoses.com
+    storage.openshift.com/local-volume-owner-name: ls1
+    storage.openshift.com/local-volume-owner-namespace: openshift-local-storage
+    storage.openshift.com/owner-kind: LocalVolume
+    storage.openshift.com/owner-name: ls1
+    storage.openshift.com/owner-namespace: openshift-local-storage
+  name: local-pv-23115230
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 95Gi
+  claimRef:
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    name: win10-rootdisk1-hnur5
+    namespace: default
+    resourceVersion: "2609817"
+    uid: 888fae00-26d2-4e14-a941-e4676e424b1b
+  local:
+    fsType: ext4
+    path: /mnt/local-storage/pmo-local/vdb1
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - api.pmo-sno2.pmo.ocp.philmoses.com
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: pmo-local
+  volumeMode: Filesystem
